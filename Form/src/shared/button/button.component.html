@@ -1,0 +1,13 @@
+<app-input
+  [type]="'email'"
+  [placeholder]="'Email'"
+  [title]="'Inserisci l\'email'"
+  (valueOut)="getEmail($event)"
+></app-input>
+<app-input
+  [type]="'password'"
+  [placeholder]="'Password'"
+  [title]="'Inserisci la password'"
+  (valueOut)="getPwd($event)"
+></app-input>
+<button (click)="sendValid()">Login</button>
