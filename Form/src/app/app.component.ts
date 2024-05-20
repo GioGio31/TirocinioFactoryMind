@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { InputComponent } from '../shared/inputField/input.component';
 import { ButtonComponent } from '../shared/button/button.component';
 
 @Component({

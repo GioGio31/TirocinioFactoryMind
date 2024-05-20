@@ -10,4 +10,12 @@
   [title]="'Inserisci la password'"
   (valueOut)="getPwd($event)"
 ></app-input>
-<button (click)="sendValid()">Login</button>
+@if(email!="" && pwd!="" &&!valid){
+  <p class="invalid ">Email o password errate!</p>
+}
+<button
+  class="btn btn-primary"
+  (click)="isValid(); sendValid()"
+>Login</button>
+
+
