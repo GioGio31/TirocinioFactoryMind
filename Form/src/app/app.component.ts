@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../shared/button/button.component';
 import { FormComponent } from '../shared/formGroup/form.component';
 import { LoginService } from '../shared/formGroup/login.service';
+import { PeopleComponent } from '../shared/peopleList/peopleList.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ButtonComponent, FormComponent],
+  imports: [FormComponent, PeopleComponent],
   providers: [
     LoginService
   ],
