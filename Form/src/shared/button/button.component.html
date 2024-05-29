@@ -1,21 +1,3 @@
-<app-input
-  [type]="'email'"
-  [placeholder]="'Email'"
-  [title]="'Inserisci l\'email'"
-  (valueOut)="getEmail($event)"
-></app-input>
-<app-input
-  [type]="'password'"
-  [placeholder]="'Password'"
-  [title]="'Inserisci la password'"
-  (valueOut)="getPwd($event)"
-></app-input>
-@if(email!="" && pwd!="" &&!valid){
-  <p class="invalid ">Email o password errate!</p>
-}
-<button
-  class="btn btn-primary"
-  (click)="isValid(); sendValid()"
->Login</button>
+
 
 

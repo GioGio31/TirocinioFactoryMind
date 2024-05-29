@@ -2,7 +2,6 @@
   max-width: 30em;
   min-width: 1em;
   margin: 0 auto;
-  display: block;
 }
 
 .figure-img{
@@ -11,3 +10,14 @@
   width: 5em;
   margin: 0 auto;
 }
+
+.ng-invalid:not(form){
+  border: 1px red solid;
+}
+
+@media screen and (max-width: 500px) {
+  .card{
+    border: 0;
+  }
+}
+
