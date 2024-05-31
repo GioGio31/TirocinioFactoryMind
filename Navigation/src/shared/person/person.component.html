@@ -1,0 +1,18 @@
+<div class="card fixed-position container-fluid text-center py-5 p-lg py-sm-5 ">
+  <h4>{{ title }}</h4>
+  <form
+      [formGroup]="formPerson"
+      (ngSubmit) = "confirmChanges()"
+  >
+      <input type="text" placeholder="Name" formControlName="name" class="form-control" required>
+      <input type="text" placeholder="Surname" formControlName="surname" class="form-control" required>
+      <input type="date" placeholder="BirthDate" formControlName="birthDate" class="form-control" required>
+      <input type="text" placeholder="Address" formControlName="address" class="form-control" required>
+      <div>
+        <button type="button" (click)="discardChanges()" class="btn d-inline">Cancella</button>
+        <button type="submit" [disabled]="formPerson.invalid" class="btn btn-success d-inline" >Conferma</button>
+      </div>
+
+  </form>
+</div>
+

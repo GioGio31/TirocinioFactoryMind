@@ -1,0 +1,50 @@
+
+<div class="d-flex card container-fluid align-items-center py-3 w-100">
+  <table class="py-5 table table-hover">
+    <thead>
+      <tr>
+        <th scope="col text-center">N.</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Cognome</th>
+        <th scope="col">Nascita</th>
+        <th scope="col">Indirizzo</th>
+        <th scope="col text-center" colspan="2">Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+  @for(person of people; track person.name; let i = $index){
+        <tr>
+          <th scope="row">{{ i }}</th>
+          <td class="col-xs-4 text-truncate">{{ person.name }}</td>
+          <td class="col-xs-4 text-truncate">{{ person.surname }}</td>
+          <td class="col-xs-4 text-truncate">{{ person.birthDate | date: 'dd/MM/yyyy' }} </td>
+          <td class="col-xs-4 text-truncate">{{ person.address }}</td>
+          <td>
+            <button  type="button" class="d-inline" title="Modifica persona" (click)="modifyPerson(1, i)" class="btn btn-warning">
+              <i class="bi bi-pencil"></i>
+            </button>
+          </td>
+          <td>
+            <button type="button" title="Elimina persona" (click)="deletePersonFromList(2, i) " class="btn btn-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+
+  }
+</tbody>
+</table>
+  <button type="button" title="Add person" class="btn btn-success add" (click)="modifyPerson(3, -1)">
+    <i class="bi bi-plus-circle"></i>
+    Aggiungi
+  </button>
+
+</div>
+@if(clickedButton == 1 && !close){
+  <app-person [personId]="personId" [title]="'Modifica utente'" (close)="closeForm($event)"></app-person>
+}
+@else if(clickedButton == 3 && !close){
+  <app-person [personId]="personId" [title] = "'Aggiungi nuovo utente'" (close)="closeForm($event)"></app-person>
+}
+
+

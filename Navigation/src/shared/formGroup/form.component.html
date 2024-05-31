@@ -1,0 +1,16 @@
+<form
+    [formGroup]="form"
+    (ngSubmit) = "sendValid()"
+>
+    <input type="email" placeholder="Email" formControlName="email" class="form-control" required>
+    <input type="password" placeholder="Password" formControlName="password" class="form-control" required>
+    @if((form.controls.email.dirty && form.controls.password.dirty)
+        && !(form.controls.email.invalid && form.controls.password.invalid)
+        && !valid
+    ){
+      <p class="invalid ">Email o password errate!</p>
+    }
+    <button type="submit" [disabled]="form.invalid" class="btn btn-primary" (click)="isValid()">Login</button>
+</form>
+
+

@@ -1,0 +1,27 @@
+.container-fluid{
+  max-width: 30em;
+  min-width: 1em;
+  margin: 0 auto;
+}
+
+.figure-img{
+  display: block;
+  height: 5em;
+  width: 5em;
+  margin: 0 auto;
+}
+
+.ng-invalid:not(form){
+  border: 1px red solid;
+}
+
+.list{
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 500px) {
+  .card{
+    border: 0;
+  }
+}
+
