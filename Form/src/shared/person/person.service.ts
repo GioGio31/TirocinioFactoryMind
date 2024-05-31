@@ -55,8 +55,7 @@ export class ManagePersonService{
     birthDate: Date,
     address: string
   ){
-    alert(id);
-    this.people[this.people.findIndex(p => p.id == id)] = {
+    this.people[id] = {
       id: id,
       name: name,
       surname: surname,

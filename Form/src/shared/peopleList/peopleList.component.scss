@@ -3,10 +3,6 @@
   display: block;
 }
 
-.invalid{
-  color: red;
-}
-
 .form-control{
   margin: 1em 0em;
 }
@@ -14,6 +10,10 @@
 .add{
   margin:0 auto;
     display:inline-flex;
+}
+
+.options {
+  display: inline;
 }
 
 

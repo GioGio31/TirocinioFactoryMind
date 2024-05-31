@@ -13,8 +13,6 @@ import { DatePipe } from '@angular/common';
 })
 export class PersonFormComponent implements OnInit {
 
-  public choice = "Visualizzazione utenti";
-
   @Input() personId = -1;
   @Input() title = "";
   @Output() public close = new EventEmitter();
