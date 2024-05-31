@@ -10,7 +10,7 @@ import { DatePipe } from '@angular/common';
   selector: 'app-peopleList',
   standalone: true,
   imports: [PersonFormComponent, ReactiveFormsModule, DatePipe],
-  providers: [ManagePersonService],
+  providers: [],
   templateUrl: './peopleList.component.html',
   styleUrl: './peopleList.component.scss'
 })
@@ -22,22 +22,22 @@ export class PeopleComponent {
 		private managePersonSvc: ManagePersonService,
 	){};
 
-  @Input() public people: Person[] = this.managePersonSvc.getPeople();
+  @Input() public people = this.managePersonSvc.getPeople();
 
-  public  close = true;
-  public closeForm(close: boolean){
+  public close = true;
+  public closeForm(close: boolean): void {
     this.close = close;
     this.setPersonId(-1);
   }
 
-  public setClickedButton(clickedButton: number){
+  public setClickedButton(clickedButton: number): void {
     this.clickedButton = clickedButton;
     if(clickedButton == 1 || clickedButton == 3){
       this.close = false;
     }
   }
 
-  public setPersonId(personId: number){
+  public setPersonId(personId: number): void {
     this.personId = personId;
   }
 
@@ -45,7 +45,7 @@ export class PeopleComponent {
     return this.managePersonSvc.getPeople();
   }
 
-  public deletePerson(id: number){
+  public deletePerson(id: number): void {
     this.managePersonSvc.deletePerson(this.personId);
   }
 }

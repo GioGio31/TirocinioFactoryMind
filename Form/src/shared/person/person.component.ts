@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Output, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ManagePersonService } from './person.service';
-import { Person } from '../models/person.interface';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -28,14 +27,14 @@ export class PersonFormComponent implements OnInit {
     address: new FormControl<string>('', [Validators.required]),
   });
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if(this.personId != -1){
-      let personData = this.managePersonSvc.people[this.personId];
+      let personData = this.managePersonSvc.defaultPeople[this.personId];
       this.formPerson.patchValue(personData);
     }
   }
 
-  public confirmChanges(){
+  public confirmChanges(): void {
     let inputData = this.formPerson.value;
     if(this.personId == -1){
       this.managePersonSvc.addNewPerson(
@@ -57,14 +56,9 @@ export class PersonFormComponent implements OnInit {
     this.close.emit(true);
   }
 
-  public discardChanges(){
+  public discardChanges(): void {
     this.close.emit(true);
   }
-
-  public getPeople(): Person[]{
-    return this.managePersonSvc.getPeople();
-  }
-
 }
 
 

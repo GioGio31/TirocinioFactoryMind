@@ -3,7 +3,7 @@ import { Person } from '../models/person.interface';
 
 @Injectable()
 export class ManagePersonService{
-  public people: Person[] = [
+  public defaultPeople: Person[] = [
     {
       id: 0,
       name: 'Mario',
@@ -28,7 +28,7 @@ export class ManagePersonService{
   ];
 
   public getPeople(): Person[] {
-    return this.people;
+    return this.defaultPeople;
   }
 
   public addNewPerson(
@@ -36,10 +36,10 @@ export class ManagePersonService{
     surname: string,
     birthDate: Date,
     address: string
-  ){
-    this.people.push(
+  ): void {
+    this.defaultPeople.push(
       {
-        id: this.people.length +1,
+        id: this.defaultPeople.length + 1,
         name: name,
         surname: surname,
         birthDate: birthDate,
@@ -54,19 +54,21 @@ export class ManagePersonService{
     surname: string,
     birthDate: Date,
     address: string
-  ){
-    this.people[id] = {
-      id: id,
-      name: name,
-      surname: surname,
-      birthDate: birthDate,
-      address: address
+  ): void {
+    if(id > 0 && id < this.defaultPeople.length){
+      this.defaultPeople[id] = {
+        id: id,
+        name: name,
+        surname: surname,
+        birthDate: birthDate,
+        address: address
+      }
     }
-    alert(this.people[this.people.findIndex(p => p.id == id)].id);
-    console.log(this.people);
   }
 
-  public deletePerson(id: number){
-    this.people.splice(id, 1);
+  public deletePerson(id: number): void {
+    if(id > 0 && id < this.defaultPeople.length){
+      this.defaultPeople.splice(id, 1);
+    }
   }
 }
