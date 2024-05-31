@@ -5,21 +5,21 @@ import { Person } from '../models/person.interface';
 export class ManagePersonService{
   public people: Person[] = [
     {
-      id: 1,
+      id: 0,
       name: 'Mario',
       surname: 'Rossi',
       birthDate: new Date(),
       address: 'Trento'
     },
     {
-      id: 2,
+      id: 1,
       name: 'Giuseppe',
       surname: 'Verdi',
       birthDate: new Date(),
       address: 'Genova'
     },
     {
-      id: 3,
+      id: 2,
       name: 'Cesare',
       surname: 'Augusto',
       birthDate: new Date(),
@@ -55,6 +55,7 @@ export class ManagePersonService{
     birthDate: Date,
     address: string
   ){
+    alert(id);
     this.people[this.people.findIndex(p => p.id == id)] = {
       id: id,
       name: name,
@@ -62,6 +63,8 @@ export class ManagePersonService{
       birthDate: birthDate,
       address: address
     }
+    alert(this.people[this.people.findIndex(p => p.id == id)].id);
+    console.log(this.people);
   }
 
   public deletePerson(id: number){

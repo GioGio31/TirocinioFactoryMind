@@ -14,7 +14,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './peopleList.component.html',
   styleUrl: './peopleList.component.scss'
 })
-export class PeopleComponent implements OnChanges {
+export class PeopleComponent {
   public personId: number = -1;
   public clickedButton = 0;
 
@@ -27,16 +27,12 @@ export class PeopleComponent implements OnChanges {
   public  close = true;
   public closeForm(close: boolean){
     this.close = close;
-    //this.setPersonId(-1);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-
+    this.setPersonId(-1);
   }
 
   public setClickedButton(clickedButton: number){
     this.clickedButton = clickedButton;
-    if(clickedButton == 1 || clickedButton == 2){
+    if(clickedButton == 1 || clickedButton == 3){
       this.close = false;
     }
   }

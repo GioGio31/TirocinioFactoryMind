@@ -1,5 +1,5 @@
-<div class="d-flex card container-fluid align-items-center py-5 p-lg py-sm-5 ">
-  <table class="table table-hover w-100">
+<div class="d-flex card container-fluid align-items-center py-3 w-100">
+  <table class="py-5 table table-hover">
     <thead>
       <tr>
         <th scope="col">N.</th>
@@ -13,16 +13,16 @@
   @for(person of people; track person.name; let i = $index){
         <tr>
           <th scope="row">{{ i }}</th>
-          <td>{{ person.name }}</td>
-          <td>{{ person.surname }}</td>
-          <td>{{ person.birthDate | date: 'dd/mm/yyy' }} </td>
-          <td>{{ person.address }}</td>
-          <td >
-            <div class="d-inline">
-              <button type="button" title="Modifica persona" (click)="setClickedButton(1); setPersonId(i); " class="btn btn-primary">
+          <td class="col-xs-4 overflow-hidden text-overflow-ellipsis">{{ person.name }}</td>
+          <td class="col-xs-4 overflow-hidden">{{ person.surname }}</td>
+          <td class="col-xs-4 overflow-hidden">{{ person.birthDate | date: 'dd/MM/yyyy' }} </td>
+          <td class="col-xs-4overflow-hidden">{{ person.address }}</td>
+          <td>
+            <div class="white-space-nowrap">
+              <button  type="button" class="d-inline" title="Modifica persona" (click)="setClickedButton(1); setPersonId(i); " class="btn btn-warning">
                 <i class="bi bi-pencil"></i>
               </button>
-              <button type="button" title="Elimina persona" (click)="setClickedButton(2); setPersonId(i); deletePerson(i); " class="btn btn-primary">
+              <button type="button" title="Elimina persona" (click)="setClickedButton(2); setPersonId(i); deletePerson(i); " class="btn btn-danger">
                 <i class="bi bi-trash"></i>
               </button>
             </div>
@@ -30,16 +30,18 @@
         </tr>
 
   }
-  </table>
+</table>
+  <button type="button" title="Add person" class="btn btn-success add" (click)="setClickedButton(3); setPersonId(-1);">
+    <i class="bi bi-plus-circle"></i>
+    Aggiungi
+  </button>
+
 </div>
 @if(clickedButton == 1 && !close){
   <app-person [personId]="personId" [title]="'Modifica utente'" (close)="closeForm($event)"></app-person>
 }
-@else if(clickedButton == 2 && !close){
+@else if(clickedButton == 3 && !close){
   <app-person [personId]="personId" [title] = "'Aggiungi nuovo utente'" (close)="closeForm($event)"></app-person>
 }
-<button type="button" title="Add person" class="btn btn-primary" (click)="setClickedButton(3); setPersonId(-1);">
-  <i class="bi bi-plus-circle"></i>
-  Aggiungi
-</button>
+
 

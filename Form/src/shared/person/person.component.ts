@@ -33,7 +33,6 @@ export class PersonFormComponent implements OnInit {
   ngOnInit(): void {
     if(this.personId != -1){
       let personData = this.managePersonSvc.people[this.personId];
-      alert(personData);
       this.formPerson.patchValue(personData);
     }
   }
@@ -48,7 +47,7 @@ export class PersonFormComponent implements OnInit {
         inputData.address
       )
     } else {
-      alert("Id in person: "+inputData.id)
+      alert("Id in person: "+this.personId)
       this.managePersonSvc.modifyPerson(
         this.personId,
         inputData.name,
