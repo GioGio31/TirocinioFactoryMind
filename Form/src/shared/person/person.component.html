@@ -1,11 +1,15 @@
-<form
-    [formGroup]="formPerson"
-    (ngSubmit) = "confirmChanges()"
->
-    <input type="text" placeholder="Name" formControlName="name" class="form-control" required>
-    <input type="text" placeholder="Surname" formControlName="surname" class="form-control" required>
-    <input type="date" placeholder="BirthDate" formControlName="birthDate" class="form-control" required>
-    <input type="text" placeholder="Address" formControlName="address" class="form-control" required>
-    <button type="button" [disabled]="formPerson.invalid" class="btn btn-primary" (click)="discardChanges()">Cancella</button>
-    <button type="submit" [disabled]="formPerson.invalid" class="btn btn-primary" >Modifica</button>
-</form>
+<div class="d-flex container-fluid align-items-center py-5 p-lg py-sm-5 ">
+  <h3>{{ title }}</h3>
+  <form
+      [formGroup]="formPerson"
+      (ngSubmit) = "confirmChanges()"
+  >
+      <input type="text" placeholder="Name" formControlName="name" class="form-control" required>
+      <input type="text" placeholder="Surname" formControlName="surname" class="form-control" required>
+      <input type="date" placeholder="BirthDate" formControlName="birthDate" class="form-control" required>
+      <input type="text" placeholder="Address" formControlName="address" class="form-control" required>
+      <button type="button" class="btn btn-primary" (click)="discardChanges()">Cancella</button>
+      <button type="submit" [disabled]="formPerson.invalid" class="btn btn-primary" >Conferma</button>
+  </form>
+</div>
+

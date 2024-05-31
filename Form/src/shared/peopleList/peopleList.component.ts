@@ -1,94 +1,57 @@
-import { Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { PersonComponent } from '../person/person.component';
+import { Component, DoCheck, EventEmitter, Input, KeyValueDiffers, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PersonFormComponent } from '../person/person.component';
+import { Person } from '../models/person.interface';
+import { ManagePersonService } from '../person/person.service';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-peopleList',
   standalone: true,
-  imports: [PersonComponent, ReactiveFormsModule],
+  imports: [PersonFormComponent, ReactiveFormsModule, DatePipe],
+  providers: [ManagePersonService],
   templateUrl: './peopleList.component.html',
   styleUrl: './peopleList.component.scss'
 })
-export class PeopleComponent implements OnInit, OnChanges {
-  public person: Person;
+export class PeopleComponent implements OnChanges {
+  public personId: number = -1;
   public clickedButton = 0;
-  constructor(){
-    this.person = {
-      id: 0,
-      name: '',
-      surname: '',
-      birthDate: '',
-      address: ''
-    }
-  }
-  public people: Person[] = [
-      {
-        id: 1,
-        name: 'Pippo',
-        surname: 'Pluto',
-        birthDate: '21/05/2000',
-        address: 'via pluto pippo'
-      },
-      {
-        id: 2,
-        name: 'Paperino',
-        surname: 'Pluto',
-        birthDate: '21/05/2000',
-        address: 'via pluto pippo'
-      }
-  ];
 
-  ngOnInit(): void {
-    this.clearPersonForm();
+  public constructor(
+		private managePersonSvc: ManagePersonService,
+	){};
+
+  @Input() public people: Person[] = this.managePersonSvc.getPeople();
+
+  public  close = true;
+  public closeForm(close: boolean){
+    this.close = close;
+    //this.setPersonId(-1);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
 
   }
 
-
-
-
-  public valid = true;
-  @Output() validOut = new EventEmitter<boolean>();
-
-  public deleteAlert(){
-    alert()
-  }
-
-  public addPerson(){
-    this.person.id = this.people.length
-    this.people.push(this.person);
-    this.clearPersonForm();
-  }
-
-  public modifyPerson(p: Person){
-    this.person = JSON.parse(JSON.stringify(p));
-  }
-
-  public deletePerson(id: number){
-    this.people.splice(id);
-  }
-
-  clearPersonForm(){
-    this.person = {
-      id: 0,
-      name: '',
-      surname: '',
-      birthDate: '',
-      address: ''
+  public setClickedButton(clickedButton: number){
+    this.clickedButton = clickedButton;
+    if(clickedButton == 1 || clickedButton == 2){
+      this.close = false;
     }
   }
 
-  public openForm(){
+  public setPersonId(personId: number){
+    this.personId = personId;
+  }
 
+  public getPeople(): Person[]{
+    return this.managePersonSvc.getPeople();
+  }
+
+  public deletePerson(id: number){
+    this.managePersonSvc.deletePerson(this.personId);
   }
 }
 
-interface Person {
-  id: number;
-  name: string;
-  surname: string;
-  birthDate: string;
-  address: string;
-}
+
