@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ManagePersonService } from './person.service';
 import { DatePipe } from '@angular/common';
+import { NavigationService } from '../../app/navigation.service';
 
 @Component({
   selector: 'app-person',
@@ -17,7 +18,8 @@ export class PersonFormComponent implements OnInit {
   @Output() public close = new EventEmitter();
 
   public constructor(
-		private managePersonSvc: ManagePersonService
+		private managePersonSvc: ManagePersonService,
+    private navigationSvc: NavigationService
 	){};
 
   formPerson: FormGroup = new FormGroup({
@@ -59,6 +61,7 @@ export class PersonFormComponent implements OnInit {
 
   public discardChanges(): void {
     this.close.emit(true);
+    this.navigationSvc.goToListOfPeople();
   }
 }
 
