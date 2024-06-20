@@ -38,7 +38,7 @@ export class PersonFormComponent implements OnInit {
 
   public confirmChanges(): void {
     let inputData = this.formPerson.value;
-    if(this.personId == -1){
+    if(this.navigationSvc.personId == -1){
       this.managePersonSvc.addNewPerson(
         inputData.name,
         inputData.surname,
@@ -46,10 +46,10 @@ export class PersonFormComponent implements OnInit {
         inputData.address
       )
     } else {
-      alert("Id in person: "+this.personId)
+      alert("Id in person: "+this.navigationSvc.personId)
       console.log("Name: " + inputData.name)
       this.managePersonSvc.modifyPerson(
-        this.personId,
+        this.navigationSvc.personId,
         inputData.name,
         inputData.surname,
         inputData.birthDate,
@@ -57,11 +57,12 @@ export class PersonFormComponent implements OnInit {
       )
     }
     this.close.emit(true);
+    this.navigationSvc.goFromFormToListOfPeople();
   }
 
   public discardChanges(): void {
     this.close.emit(true);
-    this.navigationSvc.goToListOfPeople();
+    this.navigationSvc.goFromFormToListOfPeople();
   }
 }
 

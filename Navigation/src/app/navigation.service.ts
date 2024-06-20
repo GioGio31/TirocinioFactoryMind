@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Route, Router } from "@angular/router";
+import { Router } from "@angular/router";
 
 export enum NavigationRoute{
   Login = 'login',
@@ -11,6 +11,7 @@ export enum NavigationRoute{
 
 @Injectable()
 export class NavigationService{
+  public personId = -1;
   public constructor(private router: Router){}
 
   public goToLogin(): Promise<boolean> {
@@ -25,8 +26,13 @@ export class NavigationService{
     return this.router.navigate([NavigationRoute.ListOfPeople]);
   }
 
-  public GoToPersonForm(): Promise<boolean>{
-    return this.router.navigate([NavigationRoute.PersonForm])
+  public goFromFormToListOfPeople(): Promise<boolean> {
+    return this.router.navigate([NavigationRoute.People, NavigationRoute.ListOfPeople]);
+  }
+
+  public goToPersonForm(id: number): Promise<boolean>{
+    this.personId = id;
+    return this.router.navigate([NavigationRoute.People, NavigationRoute.ListOfPeople, NavigationRoute.PersonForm])
   }
 
   public goToPageNotFound(): Promise<boolean>{

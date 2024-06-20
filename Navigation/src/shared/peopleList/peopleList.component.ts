@@ -16,6 +16,7 @@ import { NavigationService } from '../../app/navigation.service';
   styleUrl: './peopleList.component.scss'
 })
 export class PeopleComponent {
+
   public personId: number = -1;
   public clickedButton = 0;
 
@@ -25,7 +26,6 @@ export class PeopleComponent {
 	){};
 
   public people = this.managePersonSvc.getPeople();
-
   public close = true;
   public closeForm(): void {
     this.close = true;
@@ -34,10 +34,12 @@ export class PeopleComponent {
   }
 
   public modifyPerson(clickedButton: number, id: number): void{
+    console.log("Modifing person\n");
     this.setClickedButton(clickedButton);
     this.setPersonId(id);
-    console.log("Going to person form");
-    this.navigationSvc.GoToPersonForm();
+    console.log("Going to person form\n");
+    console.log("Person id: " + this.personId +"\n");
+    this.navigationSvc.goToPersonForm(this.personId);
   }
 
   public deletePersonFromList(clickedButton: number, id: number): void{
