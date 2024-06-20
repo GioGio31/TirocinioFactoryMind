@@ -19,20 +19,4 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  public valid = false;
-
-  public constructor (
-    private navigationSvc: NavigationService
-  ){}
-
-  public validCredential(valid: boolean): void{
-    this.valid = valid;
-  }
-
-  public goToListOfPeople(valid: boolean): void{
-    this.validCredential(valid)
-    if(this.valid) {
-      this.navigationSvc.goToListOfPeople();
-    }
-  }
 }

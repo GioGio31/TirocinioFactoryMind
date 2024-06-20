@@ -1,32 +1,18 @@
-// .container-fluid{
-//   max-width: 30em;
-//   min-width: 1em;
-//   margin: 0 auto;
-// }
-
-// .figure-img{
-//   display: block;
-//   height: 5em;
-//   width: 5em;
-//   margin: 0 auto;
-// }
-
-// .ng-invalid:not(form){
-//   border: 1px red solid;
-// }
-
-// .list{
-//   margin: 0 auto;
-// }
-
-// @media screen and (max-width: 500px) {
-//   .card{
-//     border: 0;
-//   }
-// }
-
-.nav{
-  position: absolute;
-  top: 0;
+body{
+  height: 95%;
+  width: 100%;
 }
+
+.subcontent{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.nav-link{
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+
 

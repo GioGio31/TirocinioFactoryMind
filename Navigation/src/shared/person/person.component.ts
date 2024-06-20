@@ -13,14 +13,15 @@ import { NavigationService } from '../../app/navigation.service';
 })
 export class PersonFormComponent implements OnInit {
 
-  @Input() personId = -1;
-  @Input() title = "";
+
   @Output() public close = new EventEmitter();
 
   public constructor(
 		private managePersonSvc: ManagePersonService,
     private navigationSvc: NavigationService
 	){};
+
+  public title = this.navigationSvc.title;
 
   formPerson: FormGroup = new FormGroup({
     name: new FormControl<string>('', [Validators.required]),
@@ -30,8 +31,8 @@ export class PersonFormComponent implements OnInit {
   });
 
   public ngOnInit(): void {
-    if(this.personId != -1){
-      let personData = this.managePersonSvc.defaultPeople[this.personId];
+    if(this.navigationSvc.personId != -1){
+      let personData = this.managePersonSvc.defaultPeople[this.navigationSvc.personId];
       this.formPerson.patchValue(personData);
     }
   }
@@ -46,8 +47,6 @@ export class PersonFormComponent implements OnInit {
         inputData.address
       )
     } else {
-      alert("Id in person: "+this.navigationSvc.personId)
-      console.log("Name: " + inputData.name)
       this.managePersonSvc.modifyPerson(
         this.navigationSvc.personId,
         inputData.name,

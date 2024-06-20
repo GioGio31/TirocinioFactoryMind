@@ -23,11 +23,7 @@ export class TemplatePage {
     private navigationSvc: NavigationService
   ){}
 
-  public addNewPerson(){
-    this.navigationSvc.goToListOfPeople
-  }
-
-  public modifyPerson(){
-
+  public goToListOfPeople(){
+    this.navigationSvc.goToListOfPeople();
   }
 }

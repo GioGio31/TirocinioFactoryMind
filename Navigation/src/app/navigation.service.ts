@@ -12,6 +12,8 @@ export enum NavigationRoute{
 @Injectable()
 export class NavigationService{
   public personId = -1;
+  public title = "Add user";
+
   public constructor(private router: Router){}
 
   public goToLogin(): Promise<boolean> {
@@ -32,6 +34,11 @@ export class NavigationService{
 
   public goToPersonForm(id: number): Promise<boolean>{
     this.personId = id;
+    if(this.personId == -1) {
+      this.title = "Add user";
+    } else {
+      this.title = "Modify user";
+    }
     return this.router.navigate([NavigationRoute.People, NavigationRoute.ListOfPeople, NavigationRoute.PersonForm])
   }
 

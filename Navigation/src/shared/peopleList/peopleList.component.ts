@@ -16,8 +16,6 @@ import { NavigationService } from '../../app/navigation.service';
   styleUrl: './peopleList.component.scss'
 })
 export class PeopleComponent {
-
-  public personId: number = -1;
   public clickedButton = 0;
 
   public constructor(
@@ -34,12 +32,9 @@ export class PeopleComponent {
   }
 
   public modifyPerson(clickedButton: number, id: number): void{
-    console.log("Modifing person\n");
     this.setClickedButton(clickedButton);
     this.setPersonId(id);
-    console.log("Going to person form\n");
-    console.log("Person id: " + this.personId +"\n");
-    this.navigationSvc.goToPersonForm(this.personId);
+    this.navigationSvc.goToPersonForm(this.navigationSvc.personId);
   }
 
   public deletePersonFromList(clickedButton: number, id: number): void{
@@ -56,11 +51,11 @@ export class PeopleComponent {
   }
 
   public setPersonId(personId: number): void {
-    this.personId = personId;
+    this.navigationSvc.personId = personId;
   }
 
   public deletePerson(): void {
-    this.managePersonSvc.deletePerson(this.personId);
+    this.managePersonSvc.deletePerson(this.navigationSvc.personId);
   }
 }
 // @if(clickedButton == 1 && !close){

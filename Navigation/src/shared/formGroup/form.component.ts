@@ -34,9 +34,10 @@ export class LoginComponent {
   }
 
   public goToListOfPeople(): void{
+    console.log("");
     this.isValid()
     if(this.valid){
-      this.navigationSvc.goToListOfPeople();
+      this.navigationSvc.goToPeople();
     }
   }
 }
