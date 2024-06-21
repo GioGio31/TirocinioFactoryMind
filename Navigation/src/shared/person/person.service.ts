@@ -71,7 +71,7 @@ export class ManagePersonService{
   }
 
   public deletePerson(id: number): void {
-    if(id > 0 && id < this.defaultPeople.length){
+    if(id >= 0 && id < this.defaultPeople.length){
       this.defaultPeople.splice(id, 1);
     }
   }

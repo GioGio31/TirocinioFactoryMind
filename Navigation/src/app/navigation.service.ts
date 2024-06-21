@@ -12,7 +12,7 @@ export enum NavigationRoute{
 @Injectable()
 export class NavigationService{
   public personId = -1;
-  public title = "Add user";
+  public title = "";
 
   public constructor(private router: Router){}
 
@@ -25,24 +25,17 @@ export class NavigationService{
   }
 
   public goToListOfPeople(): Promise<boolean> {
-    return this.router.navigate([NavigationRoute.ListOfPeople]);
-  }
-
-  public goFromFormToListOfPeople(): Promise<boolean> {
     return this.router.navigate([NavigationRoute.People, NavigationRoute.ListOfPeople]);
   }
 
   public goToPersonForm(id: number): Promise<boolean>{
     this.personId = id;
     if(this.personId == -1) {
-      this.title = "Add user";
+      this.title = "Aggiungi utente";
     } else {
-      this.title = "Modify user";
+      this.title = "Modifica utente";
     }
-    return this.router.navigate([NavigationRoute.People, NavigationRoute.ListOfPeople, NavigationRoute.PersonForm])
+    return this.router.navigate([NavigationRoute.People, NavigationRoute.PersonForm])
   }
 
-  public goToPageNotFound(): Promise<boolean>{
-    return this.router.navigate([NavigationRoute.Login]);
-  }
 }

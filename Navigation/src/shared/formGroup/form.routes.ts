@@ -5,5 +5,4 @@ import { PeopleComponent } from "../peopleList/peopleList.component";
 
 export const formRoute: Routes = [
   { path: '', component: LoginComponent},
-
 ]

@@ -56,12 +56,12 @@ export class PersonFormComponent implements OnInit {
       )
     }
     this.close.emit(true);
-    this.navigationSvc.goFromFormToListOfPeople();
+    this.navigationSvc.goToListOfPeople();
   }
 
   public discardChanges(): void {
     this.close.emit(true);
-    this.navigationSvc.goFromFormToListOfPeople();
+    this.navigationSvc.goToListOfPeople();
   }
 }
 

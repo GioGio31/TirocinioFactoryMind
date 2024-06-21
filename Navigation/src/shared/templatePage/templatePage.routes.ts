@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { PeopleComponent } from '../peopleList/peopleList.component';
 import { NavigationRoute } from '../../app/navigation.service';
 import { TemplatePage } from './templatePage.component';
 
