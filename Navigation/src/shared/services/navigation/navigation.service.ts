@@ -29,13 +29,12 @@ export class NavigationService{
   }
 
   public goToPersonForm(id: number): Promise<boolean>{
-    this.personId = id;
     if(this.personId == -1) {
       this.title = "Aggiungi utente";
     } else {
       this.title = "Modifica utente";
     }
-    return this.router.navigate([NavigationRoute.People, NavigationRoute.PersonForm])
+    return this.router.navigate([NavigationRoute.People, NavigationRoute.PersonForm, id])
   }
 
 }

@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
-import { NavigationService } from '../../app/navigation.service';
+import { NavigationService } from '../../shared/services/navigation/navigation.service';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-form',
   standalone: true,
   imports: [ReactiveFormsModule, RouterModule],
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.scss'
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   public constructor(

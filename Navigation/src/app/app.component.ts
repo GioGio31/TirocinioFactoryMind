@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from '../shared/formGroup/form.component';
-import { LoginService } from '../shared/formGroup/login.service';
-import { PeopleComponent } from '../shared/peopleList/peopleList.component';
-import { ManagePersonService } from '../shared/person/person.service';
-import { NavigationService } from './navigation.service';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
+import { PeopleComponent } from './autentication/peopleList/peopleList.component';
+import { ManagePersonService } from './autentication/person/person.service';
+import { NavigationService } from '../shared/services/navigation/navigation.service';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({

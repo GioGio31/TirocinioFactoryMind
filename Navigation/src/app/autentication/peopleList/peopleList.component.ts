@@ -4,7 +4,7 @@ import { PersonFormComponent } from '../person/person.component';
 import { ManagePersonService } from '../person/person.service';
 import { DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NavigationService } from '../../app/navigation.service';
+import { NavigationService } from '../../../shared/services/navigation/navigation.service';
 
 
 @Component({
@@ -23,18 +23,16 @@ export class PeopleComponent {
     private navigationSvc: NavigationService
 	){};
 
+  private personId = -1;
+
   public people = this.managePersonSvc.getPeople();
   public close = true;
-  public closeForm(): void {
-    this.close = true;
-    this.setPersonId(-1);
-    this.navigationSvc.goToListOfPeople();
-  }
 
   public modifyPerson(clickedButton: number, id: number): void{
     this.setClickedButton(clickedButton);
     this.setPersonId(id);
-    this.navigationSvc.goToPersonForm(this.navigationSvc.personId);
+    console.log(id);
+    this.navigationSvc.goToPersonForm(this.personId);
   }
 
   public deletePersonFromList(clickedButton: number, id: number): void{
@@ -51,17 +49,11 @@ export class PeopleComponent {
   }
 
   public setPersonId(personId: number): void {
-    this.navigationSvc.personId = personId;
+    this.personId = personId;
   }
 
   public deletePerson(): void {
-    this.managePersonSvc.deletePerson(this.navigationSvc.personId);
+    this.managePersonSvc.deletePerson(this.personId);
   }
 }
-// @if(clickedButton == 1 && !close){
-//   <app-person [personId]="personId" [title]="" (close)="closeForm($event)"></app-person>
-// }
-// @else if(clickedButton == 3 && !close){
-//   <app-person [personId]="personId" [title] = "'Aggiungi nuovo utente'" (close)="closeForm($event)"></app-person>
-// }
 

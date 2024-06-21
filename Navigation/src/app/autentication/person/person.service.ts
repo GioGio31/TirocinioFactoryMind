@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Person } from '../models/person.interface';
+import { Person } from '../../../shared/models/person.model';
 
 @Injectable()
 export class ManagePersonService{
