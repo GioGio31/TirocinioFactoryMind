@@ -11,19 +11,22 @@
 }
 
 .card{
-  width: 70%;
   align-items: center;
   box-sizing: border-box;
+  width: 25rem;
 }
 
 form {
   width: 60%;
 }
 
+.form-control {
+  display: unset;
+}
+
 @media screen and (max-width: 500px) {
   .card{
     width: inherit;
-    margin: 1rem;
     box-sizing: content-box;
   }
 }
