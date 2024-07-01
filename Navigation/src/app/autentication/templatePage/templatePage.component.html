@@ -1,17 +1,24 @@
 
+
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mx-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="people/peopleList">People list</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="people/personForm/-1">Add new person</a>
-      </li>
-    </ul>
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#showItems" aria-controls="showItems" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse navbar-toggleable-sm" id="showItems">
+      <div class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="people/peopleList">Lista persone</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="people/personForm/-1">Aggiungi membro</a>
+        </li>
+      </div>
+    </div>
   </div>
 </nav>
-<div class="subcontent h-100 d-flex align-items-center">
+
+<div class="w-100 h-100  align-items-center">
   <router-outlet></router-outlet>
 </div>
 
